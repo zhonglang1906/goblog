@@ -12,6 +12,7 @@ func handlerFunc(w http.ResponseWriter, r *http.Request) {
 	} else if r.URL.Path == "/about" {
 		fmt.Fprintf(w, "abouttttt<a href=\"https://www.baidu.com\">xxxxx</a>")
 	} else {
+		w.WriteHeader(http.StatusNotFound)
 		fmt.Fprintf(w, "<h1>11111NOT FOUND</h1>")
 	}
 }
