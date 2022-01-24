@@ -376,9 +376,6 @@ func main() {
 	route.Initialize()
 	router = route.Router
 
-	router.HandleFunc("/", homeHandler).Methods("GET").Name("home")
-	router.HandleFunc("/about", aboutHandler).Methods("GET").Name("about")
-
 	router.HandleFunc("/articles/{id:[0-9]+}",
 		articlesShowHandler).Methods("GET").Name("articles.show")
 	router.HandleFunc("/articles", articlesIndexHandler).Methods("GET").Name("articles.index")
@@ -387,10 +384,7 @@ func main() {
 	router.HandleFunc("/articles/{id:[0-9]+}/edit", articlesEditHandler).Methods("GET").Name("articles.edit")
 	router.HandleFunc("/articles/{id:[0-9]+}", articlesUpdateHandler).Methods("POST").Name("articles.update")
 	router.HandleFunc("/articles/{id:[0-9]+}/delete", articlesDeleteHandler).Methods("POST").Name("articles.delete")
-
-	//自定义 404 页面
-	router.NotFoundHandler = http.HandlerFunc(notFoundHandler)
-
+	
 	//使用中间件,强制内容类型为 HTML
 	router.Use(forceHTMLMiddleware)
 
