@@ -36,7 +36,7 @@ func (*ArticlesController) Show(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprintf(w, "500 服务器内部错误")
 		}
 	} else {
-		// 4. 读取成功，显示文章
+		// 4.读取成功，显示文章
 		tmpl, err := template.New("show.gohtml").
 			Funcs(template.FuncMap{
 				"RouteName2URL":  route.Name2URL,
